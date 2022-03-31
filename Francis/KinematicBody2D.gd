@@ -16,6 +16,9 @@ func _process(delta):
 		direction.x -= 1
 	elif Input.is_action_pressed("right"):
 		direction.x += 1
-	
+	if Input.is_action_pressed("sprint"):
+		speed = 7.5
+	else:
+		speed = 5
 	direction = direction.normalized() * speed
 	move_and_collide(direction)
