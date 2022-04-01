@@ -8,4 +8,3 @@ func _ready():
 func _process(delta):
 	if $Zombie.state == "patrolling":
 		offset = offset + speed*delta
-	print($Zombie.state)

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/TX Tileset Grass.png-2a897c97c25e4fddf281f74a605bd176.stex"
+path="res://.import/RuinHouse.png-87a364c2105ada8b45efbf7ac8980574.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/TileMap/TX Tileset Grass.png"
-dest_files=[ "res://.import/TX Tileset Grass.png-2a897c97c25e4fddf281f74a605bd176.stex" ]
+source_file="res://Assets/TileMap/RuinHouse.png"
+dest_files=[ "res://.import/RuinHouse.png-87a364c2105ada8b45efbf7ac8980574.stex" ]
 
 [params]
 

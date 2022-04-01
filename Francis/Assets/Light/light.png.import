@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/TX Struct.png-40b9ba4216707c04b7c73155a8fcd0b0.stex"
+path="res://.import/light.png-b46e62dff1f300092457d5a0db608edf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/TileMap/TX Struct.png"
-dest_files=[ "res://.import/TX Struct.png-40b9ba4216707c04b7c73155a8fcd0b0.stex" ]
+source_file="res://Assets/Light/light.png"
+dest_files=[ "res://.import/light.png-b46e62dff1f300092457d5a0db608edf.stex" ]
 
 [params]
 
