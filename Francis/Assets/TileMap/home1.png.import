@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/boulder.png-dbbf76afc104008da94ec527a69c7f16.stex"
+path="res://.import/home1.png-31a05dd1112e2a078df511c3d77a12b4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/TileMap/boulder.png"
-dest_files=[ "res://.import/boulder.png-dbbf76afc104008da94ec527a69c7f16.stex" ]
+source_file="res://Assets/TileMap/home1.png"
+dest_files=[ "res://.import/home1.png-31a05dd1112e2a078df511c3d77a12b4.stex" ]
 
 [params]
 

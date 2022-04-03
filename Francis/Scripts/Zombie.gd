@@ -2,24 +2,20 @@ extends KinematicBody2D
 
 var state = "patrolling"
 var target = null
-var speed = 175
+var speed = 50
 var last_point = null
 
 func _ready():
 	pass # Replace with function body.
 
-func _process(delta):
+func _physics_process(delta):
 	if state == "chasing":
-		var velocity = Vector2(target.position.x-global_position.x,target.position.y-global_position.y)
-		velocity = velocity.normalized()
-		velocity*=speed
+		var velocity = global_position.direction_to(target.global_position).normalized() * speed
 		move_and_slide(velocity)
 	if state == "returning":
-		var distance = pow( pow(last_point.x-global_position.x,2) + pow(last_point.y-global_position.y,2),0.5)
-		if distance > 1:
-			var velocity = Vector2(last_point.x-global_position.x,last_point.y-global_position.y)
-			velocity = velocity.normalized()
-			velocity*=speed
+		var distance = global_position.distance_to(last_point)
+		if distance > 3:
+			var velocity = global_position.direction_to(last_point).normalized() * speed
 			move_and_slide(velocity)
 		else:
 			global_position = last_point

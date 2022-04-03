@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/House.png-494d1ac8db0bbf35054102d0d9fc12bc.stex"
+path="res://.import/run turnaround-Sheet.png-86461b99579b1bbc8996fceed18cc260.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/TileMap/House.png"
-dest_files=[ "res://.import/House.png-494d1ac8db0bbf35054102d0d9fc12bc.stex" ]
+source_file="res://Assets/Character/run turnaround-Sheet.png"
+dest_files=[ "res://.import/run turnaround-Sheet.png-86461b99579b1bbc8996fceed18cc260.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
