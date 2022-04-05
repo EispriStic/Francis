@@ -1,8 +1,8 @@
 NPCS :
-	Clembod : 
+	Clembod :
 		Female Warrior : https://clembod.itch.io/warrior-free-animation-set
 
-	AstroBob :
+	AstroBob : 
 		Archer des arcanes : https://astrobob.itch.io/arcane-archer
 
 	Rvros :

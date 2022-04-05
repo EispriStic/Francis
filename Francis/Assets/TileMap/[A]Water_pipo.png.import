@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pine.png-8a69b833c4daa55805cd43fc194bf21b.stex"
+path="res://.import/[A]Water_pipo.png-305eec48d09082ac2f70ed28a18cab0f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/TileMap/pine.png"
-dest_files=[ "res://.import/pine.png-8a69b833c4daa55805cd43fc194bf21b.stex" ]
+source_file="res://Assets/TileMap/[A]Water_pipo.png"
+dest_files=[ "res://.import/[A]Water_pipo.png-305eec48d09082ac2f70ed28a18cab0f.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
