@@ -15,13 +15,9 @@ var velocity = Vector2.ZERO
 func _ready():
 	add_to_group("ennemies")
 	$Area2D/CollisionShape2D.shape.radius = detection_rad
-	if name == "Zombie10":
-		print($Area2D/CollisionShape2D.shape.radius)
+
 
 func _process(delta):
-	if name == "Zombie10":
-		print($Area2D/CollisionShape2D.shape.radius)
-		print(state)
 	if $AnimationPlayer.current_animation == "attack":
 		return
 	

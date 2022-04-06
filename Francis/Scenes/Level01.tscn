@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Assets/TileMap/houses.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Assets/TileMap/Plant.png" type="Texture" id=10]
 [ext_resource path="res://Scenes/Zombie.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scenes/Warp.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/Interface.tscn" type="PackedScene" id=13]
 
 [sub_resource type="ConvexPolygonShape2D" id=26]
 points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
@@ -1086,6 +1087,8 @@ color = Color( 0.239216, 0.239216, 0.239216, 1 )
 position = Vector2( 2253, -3264 )
 scale = Vector2( 5, 1 )
 scene = "res://Scenes/MainScene.tscn"
+
+[node name="Interface" parent="." instance=ExtResource( 13 )]
 
 [connection signal="player_got_hit" from="YSort/Zombie" to="YSort/Player" method="_on_Zombie_player_got_hit"]
 [connection signal="player_got_hit" from="YSort/Zombie2" to="YSort/Player" method="_on_Zombie_player_got_hit"]
