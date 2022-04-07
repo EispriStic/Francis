@@ -1057,7 +1057,7 @@ detection_rad = 5000
 base_speed = 355
 
 [node name="Zombie10" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 2065, -3142 )
+position = Vector2( 2065, -2725 )
 scale = Vector2( 0.8, 0.8 )
 detection_rad = 1000
 base_speed = 355
@@ -1087,8 +1087,15 @@ color = Color( 0.239216, 0.239216, 0.239216, 1 )
 position = Vector2( 2253, -3264 )
 scale = Vector2( 5, 1 )
 scene = "res://Scenes/Level02.tscn"
+spawnpoint = 1
 
 [node name="Interface" parent="." instance=ExtResource( 13 )]
+
+[node name="SpawnPoint1" type="Position2D" parent="." groups=["spawnpoints"]]
+position = Vector2( -59, 425 )
+
+[node name="SpawnPoint2" type="Position2D" parent="." groups=["spawnpoints"]]
+position = Vector2( 2253, -3078 )
 
 [connection signal="player_got_hit" from="YSort/Zombie" to="YSort/Player" method="_on_Zombie_player_got_hit"]
 [connection signal="player_got_hit" from="YSort/Zombie2" to="YSort/Player" method="_on_Zombie_player_got_hit"]
