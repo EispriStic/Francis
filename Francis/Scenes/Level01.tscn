@@ -961,6 +961,7 @@ tile_data = PoolIntArray( -2752503, 2, 0, -2752502, 2, 0, -2752501, 2, 0, -27525
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( -59, 425 )
 scale = Vector2( 2, 2 )
+current = true
 zoom = Vector2( 1.5, 1.5 )
 limit_left = -2207
 limit_right = 7871
@@ -1080,7 +1081,6 @@ detection_rad = 5000
 base_speed = 355
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color( 0.239216, 0.239216, 0.239216, 1 )
 
 [node name="Warp" parent="." instance=ExtResource( 12 )]

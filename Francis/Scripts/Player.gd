@@ -10,6 +10,8 @@ export var max_energy_cd:int = 3
 export var invincibily_seconds:int = 2
 var energy_cd = max_energy_cd
 var energy = max_energy
+signal player_death
+signal health_changed
 
 func _ready():
 	yield(get_parent(), "ready")
@@ -41,7 +43,8 @@ func _process(delta):
 				energy = max_energy
 		if $AnimationPlayer.playback_speed != 1:
 			$AnimationPlayer.playback_speed = 1
-	print(energy)
+	direction = direction.normalized() * speed
+	direction = move_and_slide(direction)
 	if direction.x > 0:
 		orientation = "Right"
 	elif direction.x < 0:
@@ -52,15 +55,15 @@ func _process(delta):
 		state = "Walk"
 	if not $AnimationPlayer.current_animation.begins_with(state) or not $AnimationPlayer.current_animation.ends_with(orientation):
 		play_animation(state)
-	direction = direction.normalized() * speed
-	move_and_slide(direction)
 
 func on_hit(damage):
 	if invincibility <= 0:
 		play_animation("Hit")
 		health -= damage
+		emit_signal("health_changed", health)
 		invincibility = invincibily_seconds
 		if health <= 0:
+			emit_signal("player_death")
 			get_parent().remove_child(self)
 
 func play_animation(name, speed=1):
