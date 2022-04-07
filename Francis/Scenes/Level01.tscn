@@ -961,7 +961,6 @@ tile_data = PoolIntArray( -2752503, 2, 0, -2752502, 2, 0, -2752501, 2, 0, -27525
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( -59, 425 )
 scale = Vector2( 2, 2 )
-current = true
 zoom = Vector2( 1.5, 1.5 )
 limit_left = -2207
 limit_right = 7871
@@ -1000,7 +999,7 @@ tile_set = SubResource( 32 )
 cell_size = Vector2( 32, 32 )
 cell_y_sort = true
 format = 1
-tile_data = PoolIntArray( -2293738, 1, 0 )
+tile_data = PoolIntArray( -2293738, 1, 0, 196654, 0, 0 )
 
 [node name="Zombie" parent="YSort" instance=ExtResource( 11 )]
 position = Vector2( -1624, 354 )
@@ -1081,12 +1080,13 @@ detection_rad = 5000
 base_speed = 355
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color( 0.239216, 0.239216, 0.239216, 1 )
 
 [node name="Warp" parent="." instance=ExtResource( 12 )]
 position = Vector2( 2253, -3264 )
 scale = Vector2( 5, 1 )
-scene = "res://Scenes/MainScene.tscn"
+scene = "res://Scenes/Level02.tscn"
 
 [node name="Interface" parent="." instance=ExtResource( 13 )]
 
