@@ -13,7 +13,6 @@ var orientation = "right"
 var velocity = Vector2.ZERO
 
 func _ready():
-	add_to_group("ennemies")
 	$Area2D/CollisionShape2D.shape.radius = detection_rad
 
 

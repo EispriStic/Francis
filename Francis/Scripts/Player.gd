@@ -10,6 +10,7 @@ var max_energy_cd = Globals.max_energy_cd
 var invincibily_seconds = Globals.invincibily_seconds
 var energy_cd = Globals.energy_cd
 var energy = Globals.energy
+var npcs = null
 
 signal player_death
 signal health_changed
@@ -18,6 +19,7 @@ func _ready():
 	yield(get_parent(), "ready")
 	var ennemies = get_tree().get_nodes_in_group("ennemies")
 	var spawnpoints = get_tree().get_nodes_in_group("spawnpoints")
+	npcs = get_tree().get_nodes_in_group("NPCs")
 	for spawnpoint in spawnpoints:
 		if spawnpoint.name.ends_with(Globals.position):
 			position = spawnpoint.position
@@ -72,7 +74,7 @@ func on_hit(damage):
 			emit_signal("player_death")
 			get_parent().remove_child(self)
 
-func play_animation(name, speed=1):
+func play_animation(name):
 	$AnimationPlayer.play(name+"_"+orientation)
 
 
@@ -80,3 +82,8 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name.begins_with("Hit"):
 		play_animation("Idle")
 		
+
+
+func _on_InteractionArea_body_entered(body):
+	if body in npcs:
+		print(body)

@@ -1,0 +1,3 @@
+[gd_scene format=2]
+
+[node name="SpawnPoint1" type="Position2D" groups=["spawnpoints"]]

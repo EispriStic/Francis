@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://Assets/Character/Hurt.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
@@ -588,6 +588,9 @@ tracks/3/keys = {
 "values": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22 ]
 }
 
+[sub_resource type="CircleShape2D" id=77]
+radius = 50.0
+
 [node name="Player" type="KinematicBody2D"]
 scale = Vector2( 2, 2 )
 script = ExtResource( 2 )
@@ -622,11 +625,16 @@ shadow_filter = 2
 shadow_filter_smooth = 50.0
 
 [node name="Light2D2" type="Light2D" parent="."]
-visible = false
 texture = ExtResource( 3 )
 mode = 2
 shadow_gradient_length = 3.0
 shadow_filter = 2
 shadow_filter_smooth = 50.0
 
+[node name="InteractionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource( 77 )
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="body_entered" from="InteractionArea" to="." method="_on_InteractionArea_body_entered"]
