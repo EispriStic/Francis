@@ -9,7 +9,6 @@ var rng = RandomNumberGenerator.new()
 var direction = Vector2(0,0)
 var state = "Idle"
 
-
 func _ready():
 	rng.randomize()
 	$AnimationPlayer.play("Idle")
