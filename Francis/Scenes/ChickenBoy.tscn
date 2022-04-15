@@ -170,9 +170,10 @@ tracks/1/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=22]
-radius = 27.0969
+radius = 40.0
 
 [node name="ChickenBoy" type="KinematicBody2D" groups=["NPCs"]]
+pause_mode = 2
 scale = Vector2( 2.5, 2.5 )
 script = ExtResource( 3 )
 
@@ -202,3 +203,4 @@ position = Vector2( 0, 10 )
 shape = SubResource( 22 )
 
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_InteractionArea_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="." method="_on_InteractionArea_body_exited"]
