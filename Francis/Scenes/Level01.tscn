@@ -1078,17 +1078,3 @@ position = Vector2( -59, 425 )
 
 [node name="SpawnPoint2" type="Position2D" parent="." groups=["spawnpoints"]]
 position = Vector2( 2253, -3078 )
-
-[connection signal="player_got_hit" from="YSort/Zombie" to="YSort/Player" method="_on_Zombie_player_got_hit"]
-[connection signal="player_got_hit" from="YSort/Zombie2" to="YSort/Player" method="_on_Zombie_player_got_hit"]
-[connection signal="player_got_hit" from="YSort/Zombie3" to="YSort/Player" method="_on_Zombie_player_got_hit"]
-[connection signal="player_got_hit" from="YSort/Zombie4" to="YSort/Player" method="_on_Zombie_player_got_hit"]
-[connection signal="player_got_hit" from="YSort/Zombie5" to="YSort/Player" method="_on_Zombie_player_got_hit"]
-[connection signal="player_got_hit" from="YSort/Zombie6" to="YSort/Player" method="_on_Zombie_player_got_hit"]
-[connection signal="player_got_hit" from="YSort/Zombie7" to="YSort/Player" method="_on_Zombie_player_got_hit"]
-[connection signal="player_got_hit" from="YSort/Zombie8" to="YSort/Player" method="_on_Zombie_player_got_hit"]
-[connection signal="player_got_hit" from="YSort/Zombie9" to="YSort/Player" method="_on_Zombie_player_got_hit"]
-[connection signal="player_got_hit" from="YSort/Zombie10" to="YSort/Player" method="_on_Zombie_player_got_hit"]
-[connection signal="player_got_hit" from="YSort/Zombie11" to="YSort/Player" method="_on_Zombie_player_got_hit"]
-[connection signal="player_got_hit" from="YSort/Zombie12" to="YSort/Player" method="_on_Zombie_player_got_hit"]
-[connection signal="player_got_hit" from="YSort/Zombie13" to="YSort/Player" method="_on_Zombie_player_got_hit"]

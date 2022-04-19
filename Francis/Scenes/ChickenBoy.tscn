@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Assets/NPCs/ChickenBoy/ChikBoy_run.png" type="Texture" id=1]
 [ext_resource path="res://Assets/NPCs/ChickenBoy/ChikBoy_idle.png" type="Texture" id=2]
@@ -169,9 +169,6 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 }
 
-[sub_resource type="CircleShape2D" id=22]
-radius = 40.0
-
 [node name="ChickenBoy" type="KinematicBody2D" groups=["NPCs"]]
 pause_mode = 2
 scale = Vector2( 2.5, 2.5 )
@@ -195,12 +192,3 @@ texture = ExtResource( 4 )
 texture_scale = 0.6
 energy = 1.2
 mode = 2
-
-[node name="InteractionArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
-position = Vector2( 0, 10 )
-shape = SubResource( 22 )
-
-[connection signal="body_entered" from="InteractionArea" to="." method="_on_InteractionArea_body_entered"]
-[connection signal="body_exited" from="InteractionArea" to="." method="_on_InteractionArea_body_exited"]

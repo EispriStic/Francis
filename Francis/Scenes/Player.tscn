@@ -644,7 +644,6 @@ scale = Vector2( 0.3, 0.3 )
 z_index = 1
 texture = ExtResource( 6 )
 
-[connection signal="interaction" from="." to="." method="_on_Player_interaction"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_InteractionArea_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="." method="_on_InteractionArea_body_exited"]

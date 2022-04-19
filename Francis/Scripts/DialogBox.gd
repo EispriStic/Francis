@@ -1,4 +1,7 @@
 extends ColorRect
+
+#J'ai suivi ce tuto : 
+# => https://www.youtube.com/watch?v=GzPvN5wsp7Y
  
 export var dialogPath = ""
 export(float) var textSpeed = 0.05
@@ -9,7 +12,7 @@ var phraseNum = 0
 var finished = false
 
 func _ready():
-	Globals.dialoging = get_node("../../..")
+	Globals.dialoging = owner.get_parent() #Même soucis, voir func nextPhrase
 	tree.paused = true
 	$Timer.wait_time = textSpeed
 	dialog = getDialog()
@@ -41,10 +44,17 @@ func getDialog() -> Array:
 func nextPhrase() -> void:
 	if phraseNum >= len(dialog):
 		queue_free()
-		#get_parent().get_parent().get_parent().remove_child(get_parent().get_parent())
-		get_node("../../..").remove_child(get_node("../.."))
+		
+		#La ligne qui pose problème ! :(
+		
+		#Le soucis c'est comment récupérer le "DialogNode" et son parent soit le npc
+		#get_node("../../..").remove_child(get_node("../.."))
+		
+		#Edit : J'ai découvert "owner" c'est un peu moins moche, perso ça me parait logique.
+		owner.get_parent().remove_child(owner)
+		
 		tree.paused = false
-		Globals.dialoging = false
+		Globals.dialoging = null
 		return
 	
 	finished = false
