@@ -46,6 +46,7 @@ tracks/0/keys = {
 [node name="DialogNode" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -59,11 +60,9 @@ margin_top = 380.0
 margin_right = 887.0
 margin_bottom = 580.0
 color = Color( 0, 0, 0, 1 )
-script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-dialogPath = "res://Dialogs/Dialog0.json"
 
 [node name="Name" type="RichTextLabel" parent="CanvasLayer/DialogBox"]
 margin_left = 13.0

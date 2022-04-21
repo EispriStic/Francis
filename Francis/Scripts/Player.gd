@@ -6,12 +6,6 @@ export var base_speed:int = 380
 
 #Ca sera utile plus tard de stocker ça dans global
 #Pour garder les stats modifiées
-var invincibility = Globals.invincibility
-var max_energy = Globals.max_energy
-var max_energy_cd = Globals.max_energy_cd
-var invincibily_seconds = Globals.invincibily_seconds
-var energy_cd = Globals.energy_cd
-var energy = Globals.energy
 var npcs = null
 var target = self
 var cursor = null
@@ -86,7 +80,7 @@ func _process(delta):
 		Input.get_action_strength("down") - Input.get_action_strength("up")
 	)
 	var speed = base_speed
-	if Input.is_action_pressed("sprint") and energy > 0 and direction != Vector2.ZERO:
+	if Input.is_action_pressed("sprint") and Globals.energy > 0 and direction != Vector2.ZERO:
 		speed *= 1.2
 		Globals.energy -= delta
 		Globals.energy_cd = Globals.max_energy_cd
@@ -121,7 +115,7 @@ func on_hit(damage):
 		play_animation("Hit")
 		Globals.health -= damage
 		emit_signal("health_changed", Globals.health)
-		Globals.invincibility = Globals.invincibily_seconds
+		Globals.invincibility = Globals.invincibility_cd
 		if Globals.health <= 0:
 			emit_signal("player_death")
 			get_parent().remove_child(self)

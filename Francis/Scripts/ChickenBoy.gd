@@ -61,4 +61,5 @@ func _on_Player_interaction(target):
 		else:
 			$AnimatedSprite.flip_h = true
 		var instance = dialogscene.instance() #Lance le dialogue
+		instance.init("0")
 		add_child(instance)

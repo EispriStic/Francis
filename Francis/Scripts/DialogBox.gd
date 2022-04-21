@@ -1,31 +1,41 @@
-extends ColorRect
+extends Control
 
 #J'ai suivi ce tuto : 
 # => https://www.youtube.com/watch?v=GzPvN5wsp7Y
  
-export var dialogPath = ""
+var dialogPath = ""
 export(float) var textSpeed = 0.05
  
 var dialog
-onready var tree = get_tree()
 var phraseNum = 0
 var finished = false
+onready var box = $CanvasLayer/DialogBox
+onready var timer = $CanvasLayer/DialogBox/Timer
+onready var namelabel = $CanvasLayer/DialogBox/Name
+onready var textlabel = $CanvasLayer/DialogBox/Text
+onready var indicator = $CanvasLayer/DialogBox/Indicator
+onready var portrait = $CanvasLayer/DialogBox/Portrait
+onready var tree = get_tree()
 
 func _ready():
-	Globals.dialoging = owner.get_parent() #Même soucis, voir func nextPhrase
+	Globals.dialoging = get_parent() #Même soucis, voir func nextPhrase
+
+func init(dialpath):
+	yield(self, "ready")
+	dialogPath = "res://Dialogs/dialog"+dialpath+".json"
 	tree.paused = true
-	$Timer.wait_time = textSpeed
+	timer.wait_time = textSpeed
 	dialog = getDialog()
 	assert(dialog, "Dialog not found")
 	nextPhrase()
  
 func _process(_delta):
-	$Indicator.visible = finished
+	indicator.visible = finished
 	if Input.is_action_just_pressed("ui_accept"):
 		if finished:
 			nextPhrase()
 		else:
-			$Text.visible_characters = len($Text.text)
+			textlabel.visible_characters = len(textlabel.text)
  
 func getDialog() -> Array:
 	var f = File.new()
@@ -45,36 +55,28 @@ func nextPhrase() -> void:
 	if phraseNum >= len(dialog):
 		queue_free()
 		
-		#La ligne qui pose problème ! :(
-		
-		#Le soucis c'est comment récupérer le "DialogNode" et son parent soit le npc
-		#get_node("../../..").remove_child(get_node("../.."))
-		
-		#Edit : J'ai découvert "owner" c'est un peu moins moche, perso ça me parait logique.
-		owner.get_parent().remove_child(owner)
-		
-		tree.paused = false
+		get_tree().paused = false
 		Globals.dialoging = null
 		return
 	
 	finished = false
 	
-	$Name.bbcode_text = dialog[phraseNum]["Name"]
-	$Text.bbcode_text = dialog[phraseNum]["Text"]
+	namelabel.bbcode_text = dialog[phraseNum]["Name"]
+	textlabel.bbcode_text = dialog[phraseNum]["Text"]
 	
-	$Text.visible_characters = 0
+	textlabel.visible_characters = 0
 	
 	var f = File.new()
 	var img = dialog[phraseNum]["Name"] + ".png"
 	if f.file_exists("portraits/"+img):
-		$Portrait.texture = load("portraits/"+img)
-	else: $Portrait.texture = null
+		portrait.texture = load("portraits/"+img)
+	else: portrait.texture = null
 	
-	while $Text.visible_characters < len($Text.text):
-		$Text.visible_characters += 1
+	while textlabel.visible_characters < len(textlabel.text):
+		textlabel.visible_characters += 1
 		
-		$Timer.start()
-		yield($Timer, "timeout")
+		timer.start()
+		yield(timer, "timeout")
 	
 	finished = true
 	phraseNum += 1
