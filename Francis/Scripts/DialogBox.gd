@@ -22,7 +22,7 @@ func _ready():
 
 func init(dialpath):
 	yield(self, "ready")
-	dialogPath = "res://Dialogs/dialog"+dialpath+".json"
+	dialogPath = "res://Dialogs/dialog"+str(dialpath)+".json"
 	tree.paused = true
 	timer.wait_time = textSpeed
 	dialog = getDialog()

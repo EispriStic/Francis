@@ -1065,12 +1065,13 @@ detection_rad = 5000
 base_speed = 355
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color( 0, 0, 0, 1 )
 
 [node name="Warp" parent="." instance=ExtResource( 12 )]
 position = Vector2( 2253, -3264 )
 scale = Vector2( 5, 1 )
-scene = "res://Scenes/Level02.tscn"
+lvl = "2"
 spawnpoint = 1
 
 [node name="SpawnPoint1" type="Position2D" parent="." groups=["spawnpoints"]]
