@@ -59,12 +59,7 @@ func _process(delta):
 
 	if $Indicator.visible:
 		choose_focus()
-		#C'est moche comme ça mais oklm
 		#L'indicateur va se positionnier au dessus du NPC / item avec lequel il pourra interagir
-		#var hitbox_target = target.get_node("CollisionShape2D")
-		#var offset = -(hitbox_target.shape.extents.y*hitbox_target.scale.y)
-		print(target.get_node("AnimatedSprite").position.y)
-		print()
 		var offset = -(target.get_node("AnimatedSprite").frames.get_frame("idle", 0).get_size()[1])*2
 		#Un truc hyper compliqué juste pour trouver le milieu haut du sprite de l'interlocuteur
 		#Faudra le changer plus tard si on veut interagir avec des items parce que ça force à avoir AnimatedSprite là
@@ -104,10 +99,10 @@ func _process(delta):
 			$AnimationPlayer.playback_speed = 1 #On remet la vitesse d'animation normal si besoin
 
 	#Déplacement
+	if direction.x != 0: turn(direction.x < 0)
 	direction = direction.normalized() * speed
 	direction = move_and_slide(direction)
 	if direction != Vector2.ZERO:
-		if direction.x != 0: turn(direction.x < 0)
 		$AnimationPlayer.play("Walk")
 	else:
 		$AnimationPlayer.play("Idle")

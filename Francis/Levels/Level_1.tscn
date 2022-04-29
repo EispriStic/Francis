@@ -998,7 +998,7 @@ tile_set = SubResource( 32 )
 cell_size = Vector2( 32, 32 )
 cell_y_sort = true
 format = 1
-tile_data = PoolIntArray( -2293738, 1, 0, 196654, 0, 0 )
+tile_data = PoolIntArray( -2293738, 1, 0 )
 
 [node name="Zombie" parent="YSort" instance=ExtResource( 11 )]
 position = Vector2( -1624, 354 )
@@ -1069,7 +1069,7 @@ visible = false
 color = Color( 0, 0, 0, 1 )
 
 [node name="Warp" parent="." instance=ExtResource( 12 )]
-position = Vector2( 2253, -3264 )
+position = Vector2( 2253, -3209 )
 scale = Vector2( 5, 1 )
 lvl = "2"
 spawnpoint = 1

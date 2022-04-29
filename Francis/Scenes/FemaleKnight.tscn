@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/NPCs/FemaleKnight/Warrior_SheetnoEffect.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 7.3 )
+extents = Vector2( 9, 5.9 )
 
 [sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 2 )
@@ -168,7 +168,7 @@ speed = 800
 max_range_from_player = 1500
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 7.7 )
+position = Vector2( 0.2, 9.1 )
 scale = Vector2( 1, 1 )
 shape = SubResource( 1 )
 

@@ -5,15 +5,23 @@ export(BEHAVIORS) var behavior
 
 export var min_energy = 0.0
 export var max_energy = 1.5
-export var timer = 3.0
+export var min_timer = 2.5
+export var max_timer = 3.5
 export var flashes = 5
 export var anim_time = 0.2
 var multiply = 1
 var nb_flashes = 0
 onready var diff = max_energy - min_energy
+var rng = RandomNumberGenerator.new()
+
+
+func gen_timer():
+	$Timer.wait_time = rng.randf_range(min_timer, max_timer)
 
 func _ready():
-	$Timer.wait_time = timer
+	rng.randomize()
+	gen_timer()
+	print($Timer.wait_time)
 	$Timer.one_shot = true
 	$Timer.start()
 	energy = max_energy
@@ -42,7 +50,7 @@ func _process(delta):
 				enabled = true
 				if nb_flashes == flashes*2:
 					nb_flashes = 0
-					$Timer.wait_time = timer
+					gen_timer()
 				else:
 					if nb_flashes%2 == 0:
 						energy = min_energy
