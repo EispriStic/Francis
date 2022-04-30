@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Huntress.png-294546b335978dbe5029e04a55e7cbec.stex"
+path="res://.import/huntress.png-ed3a862e7aa48878a6cb6c73108353d3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Portraits/Huntress.png"
-dest_files=[ "res://.import/Huntress.png-294546b335978dbe5029e04a55e7cbec.stex" ]
+source_file="res://Portraits/huntress.png"
+dest_files=[ "res://.import/huntress.png-ed3a862e7aa48878a6cb6c73108353d3.stex" ]
 
 [params]
 

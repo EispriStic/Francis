@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Fonts/ProximaNova.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/DialogBox.gd" type="Script" id=2]
+[ext_resource path="res://Fonts/Theme.tres" type="Theme" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -42,6 +43,10 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 700, 150 ), Vector2( 700, 160 ) ]
 }
+
+[sub_resource type="DynamicFont" id=5]
+size = 32
+font_data = ExtResource( 1 )
 
 [node name="DialogNode" type="Control"]
 anchor_right = 1.0
@@ -103,6 +108,7 @@ __meta__ = {
 }
 
 [node name="Indicator" type="Polygon2D" parent="CanvasLayer/DialogBox"]
+visible = false
 position = Vector2( 700, 150 )
 polygon = PoolVector2Array( 0, 0, 40, 0, 20, 30 )
 
@@ -116,3 +122,44 @@ anims/move = SubResource( 4 )
 position = Vector2( 75, -120 )
 scale = Vector2( 10, 10 )
 z_index = -1
+
+[node name="Choice1" type="Button" parent="CanvasLayer"]
+visible = false
+margin_left = 833.0
+margin_top = 315.0
+margin_right = 893.0
+margin_bottom = 365.0
+grow_horizontal = 0
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Choice2" type="Button" parent="CanvasLayer"]
+visible = false
+margin_left = 833.0
+margin_top = 250.0
+margin_right = 893.0
+margin_bottom = 300.0
+grow_horizontal = 0
+theme = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Choice3" type="Button" parent="CanvasLayer"]
+visible = false
+margin_left = 833.0
+margin_top = 185.0
+margin_right = 893.0
+margin_bottom = 235.0
+grow_horizontal = 0
+theme = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="CanvasLayer/Choice1" to="." method="_on_Choice1_pressed"]
+[connection signal="pressed" from="CanvasLayer/Choice2" to="." method="_on_Choice2_pressed"]
+[connection signal="pressed" from="CanvasLayer/Choice3" to="." method="_on_Choice3_pressed"]

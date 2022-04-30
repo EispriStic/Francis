@@ -21,7 +21,6 @@ func gen_timer():
 func _ready():
 	rng.randomize()
 	gen_timer()
-	print($Timer.wait_time)
 	$Timer.one_shot = true
 	$Timer.start()
 	energy = max_energy
@@ -36,8 +35,6 @@ func _process(delta):
 			2: #Graduate
 				enabled = true
 				energy += (diff/anim_time)*delta * multiply
-				print(energy)
-				print(delta)
 				if energy <= min_energy:
 					multiply = -multiply
 					energy = min_energy

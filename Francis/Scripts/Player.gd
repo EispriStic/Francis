@@ -49,9 +49,10 @@ func dialog_init():
 	$Indicator.visible = false
 	$AnimationPlayer.playback_speed = 1
 	
-func dialog_exit():
+func dialog_exit(from_npc):
 	#Appelé à la fin d'un dialogue
-	$Indicator.visible = true
+	print(from_npc)
+	if from_npc: $Indicator.visible = true
 
 func _process(delta):
 	if Globals.dialoging:

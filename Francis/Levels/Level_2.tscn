@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Assets/TileMap/InsideTextures.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Huntress.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Scenes/OldMan.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scenes/BlueWitch.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scenes/Light.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scenes/Trigger.tscn" type="PackedScene" id=16]
 
 [sub_resource type="TileSet" id=33]
 0/name = "InsideTech.png 0"
@@ -221,7 +222,7 @@ dialogs = [ "3" ]
 [node name="BeardGuy" parent="YSort" instance=ExtResource( 10 )]
 position = Vector2( -392, 126 )
 scale = Vector2( 4, 4 )
-dialogs = [ "1" ]
+dialogs = [ "0" ]
 speed = 200
 min_timer = 3.0
 max_timer = 6.0
@@ -280,7 +281,7 @@ lvl = "2"
 spawnpoint = 1
 
 [node name="SpawnPoint1" parent="." instance=ExtResource( 7 )]
-position = Vector2( -40, 650 )
+position = Vector2( -36, 718 )
 
 [node name="SpawnPoint2" parent="." instance=ExtResource( 7 )]
 position = Vector2( -32, -211 )
@@ -337,3 +338,9 @@ behavior = 3
 min_energy = 1.2
 flashes = 6
 anim_time = 0.1
+
+[node name="Trigger" parent="." instance=ExtResource( 16 )]
+position = Vector2( -47, 847 )
+scale = Vector2( 6.5, 1 )
+dialog = "1"
+push_player = 1

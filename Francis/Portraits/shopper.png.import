@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Beardman.png-94ffa7cbb1e66487384cb442e2574b10.stex"
+path="res://.import/shopper.png-e13a07ca26ed7372ddcab32a3d2be8e2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Portraits/Beardman.png"
-dest_files=[ "res://.import/Beardman.png-94ffa7cbb1e66487384cb442e2574b10.stex" ]
+source_file="res://Portraits/shopper.png"
+dest_files=[ "res://.import/shopper.png-e13a07ca26ed7372ddcab32a3d2be8e2.stex" ]
 
 [params]
 

@@ -1,8 +1,6 @@
 [
-	{"Name":"Woman","Text":"8====D Ôm"},
-	{"Name":"Huntress","Text":"A quelques secondes prêt, ces créatures t'auraient attrapé !"},
-	{"Name":"Huntress","Text":"T'as eu de la chance de tomber sur nous ! Bienvenue dans notre base ! On y a regroupés tout les habitants qu'on a pu trouver."},
-	{"Name":"Player","Text":"Vous êtes des soldats ? Pourquoi n'avez-vous pas d'armes à feu ?"},
-	{"Name":"Huntress","Text":"Non on n'est pas des soldats, ils sont dans la salle du fond..."},
-	{"Name":"Guard","Text":"Fait attention à eux... Je n'aime pas leurs pratiques, même si c'est pour sauver le maximum de monde..."}
+	{"image":"player"},
+	{"id":0},
+	{"index":0},
+	{"text":"*Les zombies m'attendent dehors, mieux vaut que je reste à l'abri...*"}
 ]

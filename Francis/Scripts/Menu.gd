@@ -32,8 +32,8 @@ func load_save():
 	var json = f.get_as_text()
 	var output = parse_json(json)
 	Globals.position = output.position
-	var level = str(output.level)
-	get_tree().change_scene("res://Levels/Level_"+level+".tscn")
+	var map = str(output.level)
+	get_tree().change_scene("res://Levels/Level_"+map+".tscn")
 
 
 func _on_Start_pressed():
