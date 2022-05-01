@@ -5,11 +5,11 @@
 [ext_resource path="res://Fonts/Theme.tres" type="Theme" id=3]
 
 [sub_resource type="DynamicFont" id=1]
-size = 32
+size = 40
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 20
+size = 28
 font_data = ExtResource( 1 )
 
 [sub_resource type="Animation" id=3]
@@ -83,7 +83,7 @@ __meta__ = {
 margin_left = 13.0
 margin_top = 6.0
 margin_right = 729.0
-margin_bottom = 46.0
+margin_bottom = 54.0
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
@@ -96,8 +96,8 @@ __meta__ = {
 
 [node name="Text" type="RichTextLabel" parent="CanvasLayer/DialogBox"]
 margin_left = 31.0
-margin_top = 45.0
-margin_right = 747.0
+margin_top = 53.0
+margin_right = 740.0
 margin_bottom = 189.0
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 custom_fonts/normal_font = SubResource( 2 )
@@ -130,6 +130,7 @@ margin_top = 315.0
 margin_right = 893.0
 margin_bottom = 365.0
 grow_horizontal = 0
+focus_neighbour_top = NodePath("../Choice2")
 theme = ExtResource( 3 )
 custom_fonts/font = SubResource( 5 )
 __meta__ = {
@@ -143,6 +144,7 @@ margin_top = 250.0
 margin_right = 893.0
 margin_bottom = 300.0
 grow_horizontal = 0
+focus_neighbour_bottom = NodePath("../Choice1")
 theme = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -155,6 +157,8 @@ margin_top = 185.0
 margin_right = 893.0
 margin_bottom = 235.0
 grow_horizontal = 0
+focus_neighbour_top = NodePath("../Choice1")
+focus_neighbour_bottom = NodePath("../Choice2")
 theme = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false

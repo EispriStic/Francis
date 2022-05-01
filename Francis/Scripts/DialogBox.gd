@@ -16,9 +16,9 @@ onready var portrait = $CanvasLayer/DialogBox/Portrait
 onready var choices = [$CanvasLayer/Choice1, $CanvasLayer/Choice2, $CanvasLayer/Choice3]
 onready var tree = get_tree()
 
-var dialog_id = null
-var pnj_id = null
 var indexes = {}
+var id
+var npc
 var changed_variable = null
 var wait_for_choice = false
 
@@ -29,10 +29,9 @@ func _ready():
 
 func init(id):
 	yield(self, "ready")
-	dialog_id = id
 	for button in choices:
 		button.visible = false
-	dialogPath = "res://Dialogs/dialog"+str(dialog_id)+".json"
+	dialogPath = "res://Dialogs/dialog"+str(id)+".json"
 	tree.paused = true
 	timer.wait_time = textSpeed
 	dialog = getDialog()
@@ -70,7 +69,14 @@ func getDialog() -> Array:
 func indexing_dialog():
 	for i in range(len(dialog)):
 		if dialog[i].has("index"):
-			indexes[str(dialog[i]["index"])] = i
+			var id = str(dialog[i]["index"])
+			indexes[id] = i
+
+func goto(index):
+	phraseNum = indexes[str(index)]
+
+func format_string(string):
+	return string.replace("PLAYER", Globals.pseudo).replace("KNOWN",npc["name"])
 
 func close_dialog():
 	queue_free()
@@ -78,7 +84,6 @@ func close_dialog():
 	Globals.dialoging = null
 
 func nextPhrase() -> void:
-	print(Globals.known_npcs)
 	if phraseNum >= len(dialog):
 		close_dialog()
 		return
@@ -86,42 +91,45 @@ func nextPhrase() -> void:
 	var line = dialog[phraseNum]
 	match line:
 		{"id", ..}:
-			pnj_id = str(line["id"])
-			if not Globals.known_npcs.has(pnj_id):
-				Globals.known_npcs[pnj_id] = {"name":"???", "dialogs":{dialog_id:"0"}}
+			id = str(line["id"])
+			if Globals.dialog_data.has(id):
+				goto(Globals.dialog_data[id])
 			else:
-				var data = Globals.known_npcs[pnj_id]
-				if not data["dialogs"].has(dialog_id):
-					data["dialogs"][dialog_id] = "0"
-				phraseNum = indexes[data["dialogs"][dialog_id]]
-				namelabel.bbcode_text = data["name"].replace("PLAYER", Globals.pseudo).replace("KNOWN",Globals.known_npcs[pnj_id]["name"])
-			continue
+				Globals.dialog_data[id] = "0"
+		{"goto", ..}:
+			goto(line["goto"])
 		{"save_index",..}:
-			Globals.known_npcs[pnj_id]["dialogs"][dialog_id] = str(line["save_index"])
-		{"image", ..}:
+			Globals.dialog_data[id] = str(line["save_index"])
+		{"npc", ..}:
+			var origin_name = line["npc"]
+			if not Globals.find_npc_by_name(origin_name):
+				Globals.npc_known.append({"name":"???", "origin_name":origin_name})
+			npc = Globals.find_npc_by_name(origin_name)
+			
 			var f = File.new()
-			if f.file_exists("portraits/"+line["image"]+".png"):
-				portrait.texture = load("portraits/"+line["image"]+".png")
+			if f.file_exists("portraits/"+origin_name+".png"):
+				portrait.texture = load("portraits/"+origin_name+".png")
 			else: portrait.texture = null
-			continue
+			
+			namelabel.bbcode_text = format_string(npc["name"])
 		{"close_var", ..}:
 			changed_variable = line["close_var"]
-			continue
 		{"name", ..}:
-			if line["name"] == "PLAYER":
-				namelabel.bbcode_text = Globals.pseudo
-			elif line["name"] == "KNOWN":
-				namelabel.bbcode_text = Globals.known_npcs[pnj_id]["name"]
-			else:
-				namelabel.bbcode_text = line["name"]
-				Globals.known_npcs[pnj_id]["name"] = line["name"]
-			continue
+			if line["name"] != npc["name"]:
+				npc["name"] = line["name"]
+			namelabel.bbcode_text = format_string(npc["name"])
 		{"choice", ..}:
 			wait_for_choice = true
 			for i in range(len(line["choice"])):
 				choices[i].visible = true
 				choices[i].text = line["choice"][i]
 				choices[i].grab_focus()
+			if len(line["choice"]) == 3:
+				$CanvasLayer/Choice1.focus_neighbour_bottom = $CanvasLayer/Choice3.get_path()
+				$CanvasLayer/Choice2.focus_neighbour_top = $CanvasLayer/Choice3.get_path()
+			else:
+				$CanvasLayer/Choice1.focus_neighbour_bottom = $CanvasLayer/Choice2.get_path()
+				$CanvasLayer/Choice2.focus_neighbour_top = $CanvasLayer/Choice1.get_path()
 			var choice = yield(self, "choosed")
 			wait_for_choice = false
 			phraseNum = indexes[str(line["indexes"][choice])]
@@ -137,7 +145,7 @@ func nextPhrase() -> void:
 			texting=true
 			finished = false
 			textlabel.visible_characters = 0
-			textlabel.bbcode_text = line["text"].replace("PLAYER", Globals.pseudo).replace("KNOWN",Globals.known_npcs[pnj_id]["name"])
+			textlabel.bbcode_text = format_string(line["text"])
 			
 			while textlabel.visible_characters < len(textlabel.text):
 				textlabel.visible_characters += 1

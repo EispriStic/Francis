@@ -41,7 +41,7 @@ func _ready():
 	for npc in npcs:
 		self.connect("interaction", npc, "_on_Player_interaction")
 
-func dialog_init():
+func dialog_init(from_npc):
 	#Appelé au début d'un dialogue
 	#Stop l'animation du joueur et le fait regarder son interlocuteur (= Globals.dialoging)
 	turn(global_position.direction_to(Globals.dialoging.global_position).x < 0)
@@ -51,7 +51,6 @@ func dialog_init():
 	
 func dialog_exit(from_npc):
 	#Appelé à la fin d'un dialogue
-	print(from_npc)
 	if from_npc: $Indicator.visible = true
 
 func _process(delta):

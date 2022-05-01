@@ -11,17 +11,26 @@ var energy_cd = max_energy_cd
 var energy = max_energy
 var dialoging = null
 var last_dialog_state = null
-var paused = false
 
 #Save Variable
 #Default values = New Game
 var position = 1
 var map = 1
 var pseudo = "Francis"
-var known_npcs = {"0":{"name":pseudo, "dialogs":{}}}
 var merchant_multiply = 1.25
 var inventory = []
+var FLAGS = {
+	"ALWAYS_TRUE":true,
+	"LVL2_SPEAK":false
+}
+var dialog_data = {}
+var npc_known = [{"name":"PLAYER", "origin_name":"player"}]
 
+func find_npc_by_name(name):
+	for i in npc_known:
+		if i.origin_name == name:
+			return i
+	return null
 
 signal start_dialoging
 signal stop_dialoging
@@ -35,7 +44,7 @@ func _process(delta):
 		if not last_dialog_state:
 			emit_signal("start_dialoging")
 		else:
-			emit_signal("stop_dialoging", last_dialog_state is KinematicBody2D)
+			emit_signal("stop_dialoging", last_dialog_state is KinematicBody2D, last_dialog_state)
 		last_dialog_state = dialoging
 		
 		

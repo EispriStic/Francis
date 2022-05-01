@@ -1,6 +1,11 @@
 [
-	{"image":"player"},
-	{"id":0},
+	{"id":1},
+	{"npc":"guard"},
 	{"index":0},
-	{"text":"*Les zombies m'attendent dehors, mieux vaut que je reste à l'abri...*"}
+	{"text":"Hop hop hop ! N'y retourne pas, tu es fou ?! Reste à l'abri, ces créatures sont partout dehors."},
+	{"save_index":1},
+	{"close":0},
+	{"index":1},
+	{"npc":"player"},
+	{"text":"*Il vaudrait mieux que je ne sorte pas...*"}
 ]

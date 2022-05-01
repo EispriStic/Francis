@@ -169,7 +169,6 @@ max_range_from_player = 1500
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.2, 9.1 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]

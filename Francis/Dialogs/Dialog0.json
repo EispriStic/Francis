@@ -1,8 +1,8 @@
 [
-	{"image":"shopper"},
-	{"id":1},
+	{"id":0},
 
 	{"index":0},
+	{"npc":"shopper"},
 	{"save_index":7},
 	{"close_var":"merchant_multiply"},
 	{"text":"Bien le bonjour !"},
@@ -10,31 +10,28 @@
 	{"text":"Je me nomme KNOWN, je suis l'épicier de la ville !"},
 	{"text":"Enfin, avant qu'elle ne soit dans cet état..."},
 	{"text":"Je ne t'ai jamais vu dans la base, qui es-tu ?"},
-	{"choice":["Donner son nom", "Partir"], "indexes":[2,1]},
+	{"choice":["<Partir>", "<Donner son nom>"], "indexes":[1,2]},
 	{"index":1},
 	{"close":1.5},
 
 	{"index":2},
-	{"image":"player", "name":"PLAYER"},
+	{"npc":"player"},
 	{"text":"Je m'appelle PLAYER. Je viens d'arriver dans la base."},
-	{"image":"shopper", "name":"KNOWN"},
+	{"npc":"shopper"},
 	{"text":"Enchanté PLAYER ! Bienvenu à bord, cela à dû être compliqué d'arriver jusqu'ici mais tu es à l'abri maintenant."},
-	{"choice":["Demander ce qu'il lui est arrivé", "Remercier et partir"], "indexes":[3,4]},
+	{"choice":["<Remercier et partir>", "Que vous est-il arrivé ?"], "indexes":[4,3]},
 	{"index":4},
 	{"close":1},
 
 	{"index":3},
-	{"image":"player", "name":"PLAYER"},
-	{"text":"Qu'est-ce qui vous est arrivé?"},
-	{"image":"shopper", "name":"KNOWN"},
+	{"npc":"player"},
+	{"text":"Que vous est-il arrivé ?"},
+	{"npc":"shopper"},
 	{"text":"J'étais chez moi lorsque ces monstres sont arrivés... Je me suis enfuis le plus vite possible et je me suis barricadé dans cet abri avec les autres."},
 	{"text":"C'était la panique dans la rue, on a pris ce qu'on avait pour nous défendre."},
 	{"text":"Le soucis c'est qu'on ne peut plus sortir maintenant et les réserves de nourriture ne nous permettront pas de tenir plus de trois jours, parole d'épicier."},
-	{"choice":["S'excuser de ce qu'il lui est arrivé", "Partir"], "indexes":[5,6]},
+	{"choice":["<Partir>", "<Se montrer désolé>"], "indexes":[6,5]},
 	{"index":5},
-	{"image":"player", "name":"PLAYER"},
-	{"text":"Je suis désolé pour vous..."},
-	{"image":"shopper","name":"KNOWN"},
 	{"text":"C'est gentil gamin, il faut rester fort dans les épreuves difficiles, ne l'oublie pas."},
 	{"close":0.75},
 
@@ -42,5 +39,6 @@
 	{"close":1.25},
 
 	{"index":7},
-	{"text":"Désolé, je suis occupé maintenant, va parler aux autres."}
+	{"npc":"shopper"},
+	{"text":"Désolé, je suis occupé."}
 ]

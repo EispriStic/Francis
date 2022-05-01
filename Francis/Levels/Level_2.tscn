@@ -1,19 +1,19 @@
 [gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Assets/TileMap/InsideTextures.png" type="Texture" id=1]
-[ext_resource path="res://Scenes/Huntress.tscn" type="PackedScene" id=2]
+[ext_resource path="res://NPCs/Huntress.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/FemaleKnight.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/ChickenBoy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://NPCs/FemaleKnight.tscn" type="PackedScene" id=4]
+[ext_resource path="res://NPCs/ChickenBoy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Warp.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/SpawnPoint.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/TileMap/Props.png" type="Texture" id=8]
 [ext_resource path="res://Assets/TileMap/InsideTech.png" type="Texture" id=9]
-[ext_resource path="res://Scenes/BeardGuy.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Scenes/HatMan.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Scenes/WoMan.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Scenes/OldMan.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Scenes/BlueWitch.tscn" type="PackedScene" id=14]
+[ext_resource path="res://NPCs/BeardGuy.tscn" type="PackedScene" id=10]
+[ext_resource path="res://NPCs/HatMan.tscn" type="PackedScene" id=11]
+[ext_resource path="res://NPCs/WoMan.tscn" type="PackedScene" id=12]
+[ext_resource path="res://NPCs/OldMan.tscn" type="PackedScene" id=13]
+[ext_resource path="res://NPCs/BlueWitch.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scenes/Light.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Scenes/Trigger.tscn" type="PackedScene" id=16]
 
@@ -207,12 +207,12 @@ tile_data = PoolIntArray( -327682, 1, 0 )
 
 [node name="ChickenBoy" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( -277, -245 )
-dialogs = [ "0" ]
+dialogs = [ "4" ]
 
 [node name="Huntress" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( -178, 408 )
 scale = Vector2( 4, 4 )
-dialogs = [ "1" ]
+dialogs = [ "2" ]
 
 [node name="FemaleKnight" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 102, 381 )
@@ -287,6 +287,7 @@ position = Vector2( -36, 718 )
 position = Vector2( -32, -211 )
 
 [node name="Ambient" type="Node2D" parent="."]
+visible = false
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Ambient"]
 color = Color( 0.0784314, 0.0784314, 0.0784314, 1 )
@@ -340,7 +341,9 @@ flashes = 6
 anim_time = 0.1
 
 [node name="Trigger" parent="." instance=ExtResource( 16 )]
-position = Vector2( -47, 847 )
+position = Vector2( -57, 847 )
 scale = Vector2( 6.5, 1 )
 dialog = "1"
+delete_with_flag = true
 push_player = 1
+flag = "LVL2_SPEAK"

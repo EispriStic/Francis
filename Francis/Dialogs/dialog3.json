@@ -1,0 +1,37 @@
+[
+	{"id":3},
+	{"index":0},
+	{"save_index":5},
+	{"npc":"guard"},
+	{"name":"Lucile"},
+	{"text":"Salut mon petit! Je suis Lucile, avant aujourd'hui j'étais une otaku et j'étais fan de cosplay !"},
+	{"text":"Je n'aurais jamais pensé utiliser ces accessoires dans une situation réelle par contre..."},
+	{"text":"Mais je m'égare, dorénavant, je suis la chef de cette base et je veille à ce que personne n'y perde la vie !"},
+
+	{"index":1},
+	{"choice":["<Partir>", "Où sommes-nous ?", "Qui êtes-vous ?"], "indexes":[2,3,4]},
+
+
+	{"index":3},
+	{"npc":"player"},
+	{"text":"Où sommes-nous ?"},
+	{"npc":"guard"},
+	{"text":"Nous sommes actuellement barricadés dans un entrepôt ! Depuis que ces créatures nous sont tombés dessus, on ne peut que se cacher en espérant avoir du secours."},
+	{"goto":1},
+
+	{"index":4},
+	{"npc":"player"},
+	{"text":"Qui êtes-vous ?"},
+	{"npc":"guard"},
+	{"text":"De simples civils, Léna et moi avions des armes sous la main lorsque ces créatures sont arrivées, alors on est parti secourir le maximum de monde et on s'est barricadé ici."},
+	{"text":"Tout ces gens ici seraient morts si on avait pas été là... toi y compris..."},
+	{"goto":1},
+
+	{"index":5},
+	{"npc":"guard"},
+	{"text":"Que puis-je faire pour toi ?"},
+	{"goto":1},
+
+	{"index":2},
+	{"text":"Fais attention à toi, je ne veux pas perdre une vie de plus ici."}
+]
