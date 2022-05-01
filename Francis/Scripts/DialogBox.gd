@@ -98,6 +98,10 @@ func nextPhrase() -> void:
 				Globals.dialog_data[id] = "0"
 		{"goto", ..}:
 			goto(line["goto"])
+		{"add_flag", ..}:
+			var flagname = line["add_flag"]
+			assert(Globals.FLAGS.has(flagname), "UNKNOWN FLAG")
+			Globals.FLAGS[flagname] = true
 		{"save_index",..}:
 			Globals.dialog_data[id] = str(line["save_index"])
 		{"npc", ..}:

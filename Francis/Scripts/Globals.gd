@@ -21,7 +21,8 @@ var merchant_multiply = 1.25
 var inventory = []
 var FLAGS = {
 	"ALWAYS_TRUE":true,
-	"LVL2_SPEAK":false
+	"LVL2_SPEAK":false,
+	"PARENT_QUEST_STARTED":false
 }
 var dialog_data = {}
 var npc_known = [{"name":"PLAYER", "origin_name":"player"}]
