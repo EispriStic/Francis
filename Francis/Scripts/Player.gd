@@ -34,14 +34,15 @@ func _ready():
 	$AnimationPlayer.play("Idle")
 	
 	#Connection des signals
-	Globals.connect("start_dialoging", self, "dialog_init")
-	Globals.connect("stop_dialoging", self, "dialog_exit")
+	Globals.connect("start_dialoging", self, "_dialog_init")
+	Globals.connect("stop_dialoging", self, "_dialog_exit")
 	for ennemy in ennemies:
 		ennemy.connect("player_got_hit", self, "on_hit")
+		print("connected")
 	for npc in npcs:
 		self.connect("interaction", npc, "_on_Player_interaction")
 
-func dialog_init(from_npc):
+func _dialog_init(from_npc, dialoger):
 	#Appelé au début d'un dialogue
 	#Stop l'animation du joueur et le fait regarder son interlocuteur (= Globals.dialoging)
 	turn(global_position.direction_to(Globals.dialoging.global_position).x < 0)
@@ -49,12 +50,15 @@ func dialog_init(from_npc):
 	$Indicator.visible = false
 	$AnimationPlayer.playback_speed = 1
 	
-func dialog_exit(from_npc):
+func _dialog_exit(from_npc, dialoger):
 	#Appelé à la fin d'un dialogue
 	if from_npc: $Indicator.visible = true
 
 func _process(delta):
 	if Globals.dialoging:
+		return
+
+	if $AnimationPlayer.current_animation == "Hit":
 		return
 
 	if $Indicator.visible:
@@ -69,8 +73,6 @@ func _process(delta):
 	if Globals.invincibility > 0:
 		Globals.invincibility -= delta
 	#Si le joueur se fait taper, on l'empêche de bouger ou interagir
-	if $AnimationPlayer.current_animation == "Hit":
-		return
 		
 	#Interaction
 	if Input.is_action_just_pressed("ui_accept") and $Indicator.visible:
@@ -115,7 +117,8 @@ func on_hit(damage):
 		Globals.invincibility = Globals.invincibility_cd
 		if Globals.health <= 0:
 			emit_signal("player_death")
-			get_parent().remove_child(self)
+			get_tree().change_scene("res://Scenes/GameOver.tscn")
+			queue_free()
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):

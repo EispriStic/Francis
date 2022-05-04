@@ -21,6 +21,7 @@ func _on_Quit_pressed():
 
 
 func _on_Continue_pressed():
+	Globals.reset_player()
 	load_save()
 
 func load_save():
@@ -37,4 +38,5 @@ func load_save():
 
 
 func _on_Start_pressed():
+	Globals.reset_player()
 	get_tree().change_scene("res://Levels/Level_1.tscn")

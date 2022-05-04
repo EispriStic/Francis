@@ -1,14 +1,14 @@
 extends Node
 
 var player
-var health = 5
-var base_speed = 380
-var invincibility = 0
-var max_energy = 5
-var max_energy_cd = 3
-var invincibility_cd = 2
-var energy_cd = max_energy_cd
-var energy = max_energy
+var health
+var base_speed
+var invincibility
+var max_energy
+var max_energy_cd
+var invincibility_cd
+var energy_cd
+var energy
 var dialoging = null
 var last_dialog_state = null
 
@@ -27,6 +27,16 @@ var FLAGS = {
 var dialog_data = {}
 var npc_known = [{"name":"PLAYER", "origin_name":"player"}]
 
+func reset_player():
+	health = 5
+	base_speed = 380
+	invincibility = 0
+	max_energy = 5
+	max_energy_cd = 3
+	invincibility_cd = 2
+	energy_cd = max_energy_cd
+	energy = max_energy
+
 func find_npc_by_name(name):
 	for i in npc_known:
 		if i.origin_name == name:
@@ -43,7 +53,7 @@ func _ready():
 func _process(delta):
 	if dialoging != last_dialog_state: #Si changement de la valeur de dialog
 		if not last_dialog_state:
-			emit_signal("start_dialoging")
+			emit_signal("start_dialoging", dialoging is KinematicBody2D, dialoging)
 		else:
 			emit_signal("stop_dialoging", last_dialog_state is KinematicBody2D, last_dialog_state)
 		last_dialog_state = dialoging

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/StoneGround.png-efb97067b11f01fd69dd99ec578f5de8.stex"
+path="res://.import/Dungeon.png-5cc8c985c039ed312510b9573bc2e4f0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/TileMap/StoneGround.png"
-dest_files=[ "res://.import/StoneGround.png-efb97067b11f01fd69dd99ec578f5de8.stex" ]
+source_file="res://Assets/TileMap/Dungeon/Dungeon.png"
+dest_files=[ "res://.import/Dungeon.png-5cc8c985c039ed312510b9573bc2e4f0.stex" ]
 
 [params]
 
