@@ -191,7 +191,7 @@ points = PoolVector2Array( 0, 0, 96, 0, 96, 64, 88, 64, 88, 56, 8, 56, 8, 64, 0,
 } ]
 6/z_index = 0
 
-[node name="World" type="Node2D"]
+[node name="World2" type="Node2D"]
 
 [node name="Ground" type="TileMap" parent="."]
 scale = Vector2( 3, 3 )
@@ -264,7 +264,7 @@ max_range_from_player = 3000
 [node name="Woman" parent="YSort" instance=ExtResource( 12 )]
 position = Vector2( 572, -189 )
 scale = Vector2( 4, 4 )
-dialogs = [ "1" ]
+dialogs = [ "7" ]
 speed = 400
 min_timer = 6.0
 max_timer = 9.0

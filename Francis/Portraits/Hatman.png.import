@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hatman.png-21f1c32f7127e02b76b02bb032da265d.stex"
+path="res://.import/Hatman.png-1afb387b8a0cc21b132b18db1623f72b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Portraits/hatman.png"
-dest_files=[ "res://.import/hatman.png-21f1c32f7127e02b76b02bb032da265d.stex" ]
+source_file="res://Portraits/Hatman.png"
+dest_files=[ "res://.import/Hatman.png-1afb387b8a0cc21b132b18db1623f72b.stex" ]
 
 [params]
 
