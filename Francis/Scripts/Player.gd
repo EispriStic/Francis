@@ -5,6 +5,8 @@ export var base_speed:int = 380
 #Ca sera utile plus tard de stocker ça dans global
 #Pour garder les stats modifiées
 var npcs = null
+var props = null
+var hit_tile = null
 var target = self
 var cursor = null
 var interactions = []
@@ -12,6 +14,7 @@ var interactions = []
 signal player_death
 signal health_changed #askip Regis en a besoin mais bon il a jamais bossé MDR
 signal interaction
+signal collide
 
 func turn(value=null):
 	if value == null or value != $AnimatedSprite.flip_h:
@@ -19,12 +22,15 @@ func turn(value=null):
 		$AnimatedSprite.offset.x = - $AnimatedSprite.offset.x
 
 func _ready():
+	$Indicator.visible = false
 	$AnimatedSprite.position = Vector2.ZERO
 	yield(get_parent(), "ready")
 	Globals.player = self
 	var ennemies = get_tree().get_nodes_in_group("ennemies")
 	var spawnpoints = get_tree().get_nodes_in_group("spawnpoints")
 	npcs = get_tree().get_nodes_in_group("NPCs")
+	props = get_tree().get_nodes_in_group("props")
+	hit_tile = get_tree().get_nodes_in_group("hit_tile")
 	#Trouver où spawn
 	#Globals.position = 2 => Spawn au noeud "SpawnPoint2"
 	for spawnpoint in spawnpoints:
@@ -38,9 +44,12 @@ func _ready():
 	Globals.connect("stop_dialoging", self, "_dialog_exit")
 	for ennemy in ennemies:
 		ennemy.connect("player_got_hit", self, "on_hit")
-		print("connected")
 	for npc in npcs:
 		self.connect("interaction", npc, "_on_Player_interaction")
+	for prop in props:
+		self.connect("interaction", prop, "_on_Player_interaction")
+	for tile in hit_tile:
+		self.connect("collide", tile, "_on_Player_collide")
 
 func _dialog_init(from_npc, dialoger):
 	#Appelé au début d'un dialogue
@@ -63,6 +72,7 @@ func _process(delta):
 
 	if $Indicator.visible:
 		choose_focus()
+		$Indicator.flip_h = not target.get_node("AnimatedSprite").flip_h
 		#L'indicateur va se positionnier au dessus du NPC / item avec lequel il pourra interagir
 		var offset = -(target.get_node("AnimatedSprite").frames.get_frame("idle", 0).get_size()[1])*2
 		#Un truc hyper compliqué juste pour trouver le milieu haut du sprite de l'interlocuteur
@@ -108,6 +118,13 @@ func _process(delta):
 		$AnimationPlayer.play("Walk")
 	else:
 		$AnimationPlayer.play("Idle")
+	
+	#Detection des collisions
+	var slide_count = get_slide_count()
+	for idx in range(slide_count):
+		var collision = get_slide_collision(idx)
+		var collider = collision.collider
+		emit_signal("collide", collider, self)
 
 func on_hit(damage):
 	if Globals.invincibility <= 0:
@@ -136,13 +153,13 @@ func choose_focus():
 func _on_InteractionArea_body_entered(body):
 	#On liste toutes les interactions possible
 	#On trouve la plus proche de nous => On la définie comme cible.
-	if body in npcs:
+	if body in npcs or body in props:
 		interactions.append(body)
 		$Indicator.visible=true
 
 func _on_InteractionArea_body_exited(body):
 	#On retire l'interaction manquante de la liste et si la liste est vide on fait disparaitre l'indicateur.
-	if body in npcs:
+	if body in npcs or body in props:
 		var index = interactions.find(body, 0)
 		if index != -1:
 			interactions.remove(index)

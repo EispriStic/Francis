@@ -256,7 +256,7 @@ tile_data = PoolIntArray( -589828, 7, 0, -589827, 1, 0, -589826, 1, 0, -589825, 
 position = Vector2( -48, 390 )
 
 [node name="SpawnPoint2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 756, -2 )
+position = Vector2( 805, -259 )
 
 [node name="Ambient" type="Node2D" parent="."]
 

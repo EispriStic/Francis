@@ -47,6 +47,7 @@ signal start_dialoging
 signal stop_dialoging
 
 func _ready():
+	reset_player()
 	VisualServer.set_default_clear_color(Color(0,0,0,0)) #Met le fond en noir
 	pause_mode = Node.PAUSE_MODE_PROCESS
 
