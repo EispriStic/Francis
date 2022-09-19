@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player.png-cd6045499046bc9ecd3b310f58c4b3b6.stex"
+path="res://.import/staminaprogress.png-a4b4d59cd0d6184fe3ce017cf2b17ff9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Portraits/player.png"
-dest_files=[ "res://.import/player.png-cd6045499046bc9ecd3b310f58c4b3b6.stex" ]
+source_file="res://Assets/UI/staminaprogress.png"
+dest_files=[ "res://.import/staminaprogress.png-a4b4d59cd0d6184fe3ce017cf2b17ff9.stex" ]
 
 [params]
 

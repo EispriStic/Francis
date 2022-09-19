@@ -7,6 +7,8 @@ var chasing = false
 export var case_horizontal = 5
 export var case_vertical = 0
 export var light_degrees = 0
+export var light_width = 3
+export var light_height = 3
 export var turning = false
 export var clockwise = true
 onready var max_horizontal = case_horizontal * 96
@@ -14,11 +16,12 @@ onready var max_vertical = case_vertical * 96
 export var timing = 1.5
 const orange = Color("#ff7e01")
 const red = Color("#ff0000")
-var direction = Vector2.ZERO
 signal player_got_hit
 onready var next_point 
 
 func _ready():
+	light.scale.x = 0.18 * light_width
+	light.scale.y = 0.5*light_height
 	$Timer.one_shot = true
 	$Timer.wait_time = timing
 	$AnimationPlayer.play("Run")
@@ -26,38 +29,13 @@ func _ready():
 	next_point = get_next_point()
 
 func get_next_point():
-	return position + direction.normalized() * Vector2(max_horizontal, max_vertical).length()
+	var rad = light.rotation_degrees * (PI/180)
+	return position + Vector2(cos(rad),sin(rad)).normalized() * Vector2(max_horizontal, max_vertical).length()
 
 func rotate_light(degrees):
-	#Oui, moi aussi j'ai envie de chialer en voyant ça
 	degrees = int(degrees)%360
 	light.rotation_degrees = degrees
 	turn(degrees > 90 and degrees < 270)
-	match degrees:
-		0:
-			light.offset = Vector2(84,-5.5)
-			direction = Vector2(1,0)
-		45:
-			light.offset = Vector2(80,-5.5)
-			direction = Vector2(1,1).normalized()
-		90:
-			light.offset = Vector2(78,-5.5)
-			direction = Vector2(0,1)
-		135:
-			light.offset = Vector2(80,3)
-			direction = Vector2(-1,1).normalized()
-		180:
-			light.offset = Vector2(84, 2)
-			direction = Vector2(-1,0)
-		225:
-			light.offset = Vector2(84,0)
-			direction = Vector2(-1,-1).normalized()
-		270:
-			light.offset = Vector2(84,1)
-			direction = Vector2(0,-1)
-		315:
-			light.offset = Vector2(84,-2)
-			direction = Vector2(1,-1).normalized()
 
 func nearest_vect(vect):
 	var tab = [Vector2(1,0), Vector2(1,1).normalized(), Vector2(0,1), Vector2(-1,1).normalized(), Vector2(-1,0), Vector2(-1,-1).normalized(), Vector2(0,-1), Vector2(1,-1).normalized()]
@@ -130,6 +108,7 @@ func _process(delta):
 		$AnimationPlayer.play("Run")
 		var dir = global_position.direction_to(Vector2(Globals.player.global_position.x, Globals.player.global_position.y-1)).normalized()
 		rotate_light(nearest_vect(dir))
+		light.look_at(Globals.player.global_position)
 		var distance = global_position.distance_to(Vector2(Globals.player.global_position.x, Globals.player.global_position.y-1))
 		if distance < 3: return
 		var velocity = dir*speed

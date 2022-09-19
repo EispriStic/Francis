@@ -67,8 +67,6 @@ func _process(delta):
 						set_timer()
 					else:
 						current_collision += 1
-						if name == "BeardGuy":
-							print(current_collision)
 						if current_collision == max_collision:
 							set_timer()
 							current_collision = 0

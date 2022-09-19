@@ -1,8 +1,40 @@
-[gd_scene format=2]
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/UI/staminaprogress.png" type="Texture" id=1]
+[ext_resource path="res://Assets/UI/hpbarprogress.png" type="Texture" id=2]
+[ext_resource path="res://Assets/UI/hpbarover.png" type="Texture" id=3]
+[ext_resource path="res://Assets/UI/hpbarunder.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/Interface.gd" type="Script" id=5]
 
 [node name="Interface" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HpBar" type="TextureProgress" parent="."]
+margin_left = 18.0
+margin_top = 41.0
+margin_right = 468.0
+margin_bottom = 91.0
+rect_scale = Vector2( 0.8, 0.5 )
+value = 60.0
+texture_under = ExtResource( 4 )
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 2 )
+
+[node name="StaminaBar" type="TextureProgress" parent="."]
+margin_left = 19.0
+margin_top = 71.0
+margin_right = 469.0
+margin_bottom = 121.0
+rect_scale = Vector2( 0.4, 0.4 )
+value = 50.0
+texture_under = ExtResource( 4 )
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

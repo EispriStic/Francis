@@ -1,6 +1,7 @@
 extends Node
 
 var player
+var max_health
 var health
 var base_speed
 var invincibility
@@ -28,12 +29,13 @@ var dialog_data = {}
 var npc_known = [{"name":"PLAYER", "origin_name":"player"}]
 
 func reset_player():
-	health = 5
-	base_speed = 380
+	max_health = 5.0
+	health = 5.0
+	base_speed = 380.0
 	invincibility = 0
-	max_energy = 5
-	max_energy_cd = 3
-	invincibility_cd = 2
+	max_energy = 5.0
+	max_energy_cd = 3.0
+	invincibility_cd = 2.0
 	energy_cd = max_energy_cd
 	energy = max_energy
 
